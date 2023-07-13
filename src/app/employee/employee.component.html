@@ -1,0 +1,102 @@
+<div class="container">
+<button type="button" class="btn btn-primary item" (click)="createForm()">create</button>
+<div *ngIf="isCreatedForm">
+  <form  [formGroup]="myForm">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First name</label>
+      <input type="text" formControlName="firstName" class="form-control" id="firstName" >
+      <!-- <div id="firstName" class="form-text">We'll never share your email with anyone else.</div> -->
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">First name</label>
+      <input formControlName="lastName" type="text" class="form-control" id="lastName">
+      <!-- <div id="firstName" class="form-text">We'll never share your email with anyone else.</div> -->
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="email">
+      <!-- <div id="email" class="form-text">We'll never share your email with anyone else.</div> -->
+    </div>
+
+    <select formControlName="departement" >
+      <option value="">Select a department</option>
+      <option *ngFor="let departement of _departments" [value]="departement.id">{{ departement.firstName }}</option>
+    </select>
+
+    <!-- <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>-->
+    <!-- <div class="mb-3 form-check">
+      <input type="checkbox" [(ngModel)]="status" [checked]="" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <div class="mb-3 form-check">
+      <input type="checkbox"  formControlName="status" id="status">
+      <p>Status: {{ myForm.controls['status'].value ? 'true' : 'false' }}</p>
+
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+  </form>
+</div>
+
+</div>
+<div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+        <th scope="col">email</th>
+        <th scope="col">departement</th>
+        <th scope="col">supprimer</th>
+        <th scope="col">modifier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of _users; let i = index">
+        <!-- <td style="width: 5%" class="text-center" scope="row">
+        </td> -->
+        <td>{{ obj.id }} </td>
+        <td>{{ obj.firstName }}</td>
+        <td>{{ obj.lastName }}</td>
+        <td >
+          {{ obj.email }}
+        </td >
+        <td [ngStyle]="{ color: obj.status ? 'green' : 'red' }">{{ obj.departement.firstName }}  <p>Status: {{obj.status ? 'true' : 'false' }}</p></td>
+       
+        <td>
+          <!-- <app-confirm-dialog>  -->
+                          <img src="assets/images/icons8-supprimer-100.png" alt="Example Image"  data-bs-toggle="modal"  (click)="userDelete(obj)"/>
+          <!-- </app-confirm-dialog>  -->
+          
+        </td>
+          
+        <td><img src="assets/images/icons8-modifier-64.png" alt="Example Image"></td>
+   
+      </tr>
+     
+      </tbody>
+     
+  </table>
+  <h1>Angular 8 Bootstrap Modal Popup Example</h1>
+   
+  <div class="container">
+    <h1>Ng Bootstrap Modal</h1>
+    <p>
+      Modal is a form of temporary UI that slides into the screen, over the page  
+      content, and is often used for login/registration forms, composing messages, or   
+       presenting app configuration options etc.
+    </p>
+    <button class="btn btn-primary" (click)="openModal()">Show Dialog</button>
+    <!-- <app-modal (passEntry)="receiveDataFromModal($event)"></app-modal> -->
+   </div>
+
+
+
+ 
+
