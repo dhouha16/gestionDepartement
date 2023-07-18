@@ -11,6 +11,15 @@ import { DepartementComponent } from './departement/departement.component';
 import { NgbActiveModal, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmDialogComponent } from './sharedConfig/confirm-dialog/confirm-dialog.component';
 import { ModalComponent } from './sharedConfig/modal/modal.component';
+import { Routes } from '@angular/router';
+import { PrivateModule } from './private/private.module';
+import { BaseLayoutComponent } from './private/sharedLayout/base-layout/base-layout.component';
+import { SidbarComponent } from './private/sharedLayout/sidbar/sidbar.component';
+import { HeaderComponent } from './private/sharedLayout/header/header.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -19,6 +28,7 @@ import { ModalComponent } from './sharedConfig/modal/modal.component';
     DepartementComponent,
     ConfirmDialogComponent,
     ModalComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -28,7 +38,7 @@ import { ModalComponent } from './sharedConfig/modal/modal.component';
     ReactiveFormsModule,
     NgbModule,
     NgbModalModule,
-
+    PrivateModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]
