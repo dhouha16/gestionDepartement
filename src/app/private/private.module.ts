@@ -5,6 +5,8 @@ import { HeaderComponent } from './sharedLayout/header/header.component';
 import { BaseLayoutComponent } from './sharedLayout/base-layout/base-layout.component';
 import { Routes } from '@angular/router';
 import { PrivateRoutingModule } from './private-routing.module';
+import { FooterComponent } from './sharedLayout/footer/footer.component';
+
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { PrivateRoutingModule } from './private-routing.module';
     SidbarComponent,
     HeaderComponent,
     BaseLayoutComponent,
+    FooterComponent,
     // Declare your private component here
   ],
   exports: [

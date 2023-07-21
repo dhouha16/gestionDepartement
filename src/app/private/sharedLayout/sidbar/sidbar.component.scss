@@ -46,7 +46,7 @@ a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #7386d5;
+  background: #d573cd4d;
   color: #fff;
   transition: all 0.3s;
 }
@@ -56,7 +56,6 @@ a:focus {
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d7fcc;
 }
 #sidebar ul.components {
   padding: 20px 0px;
@@ -102,7 +101,7 @@ ul ul a {
 }
 
 ul.CTAs {
-  padding: 20px;
+  padding: 60px;
 }
 
 ul.CTAs a {
@@ -111,6 +110,8 @@ ul.CTAs a {
   display: block;
   border-radius: 5px;
   margin-bottom: 5px;
+  padding-top: 50px;
+  padding-bottom: 140px;
 }
 a.download {
   background: #fff;
@@ -139,4 +140,43 @@ a.article:hover {
   #sidebarCollapse span {
     display: none;
   }
+}
+
+.container-flex{
+  display: flex;
+  flex-direction: row;
+ flex-wrap: wrap;
+ text-align: center;
+}
+.child {
+  width: 100px;  /* Or whatever */
+  height: 100px; /* Or whatever */
+  margin: auto;  /* Magic! */
+}
+.item-flex-header{
+  font-style: italic;
+  background: #c972ac;
+
+}
+.container-flex-list-sideBar{
+  padding-bottom: 130%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-self:center;
+  padding-top:10px;
+  align-items: stretch;
+  flex-basis: 100%;
+  justify-content: space-around 
+
+}
+.item-flex-img-sidebar{
+  padding-bottom:10px;
+  align-self:center;
+  justify-content: space-around 
+}
+.item-flex-bottom-sideBar{
+  align-self:center;
+  justify-content:center;
 }
