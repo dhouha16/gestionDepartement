@@ -6,13 +6,19 @@ import { BaseLayoutComponent } from './sharedLayout/base-layout/base-layout.comp
 import { Routes } from '@angular/router';
 import { PrivateRoutingModule } from './private-routing.module';
 import { FooterComponent } from './sharedLayout/footer/footer.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { DepartementComponent } from './departement/departement.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
-    PrivateRoutingModule
+    PrivateRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+
   // Add any other required modules
   ],
   declarations: [
@@ -20,6 +26,8 @@ import { FooterComponent } from './sharedLayout/footer/footer.component';
     HeaderComponent,
     BaseLayoutComponent,
     FooterComponent,
+    EmployeeComponent,
+    DepartementComponent,
     // Declare your private component here
   ],
   exports: [

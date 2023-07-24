@@ -1,0 +1,78 @@
+<div class="container px-5">
+
+    <div class="title-item flex-items">
+      <h1 style="font-style: italic; text-align: center; color: #df53b0;" >
+        Gestion utilisateur
+      </h1>
+    </div>
+  
+  <div class="table-item">
+    <table class="table" st>
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">email</th>
+          <th scope="col">departement</th>
+          <th scope="col">supprimer</th>
+          <th scope="col">modifier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let obj of _users; let i = index">
+          <!-- <td style="width: 5%" class="text-center" scope="row">
+          </td> -->
+          <td>{{ obj.id }}</td>
+          <td>{{ obj.firstName }}</td>
+          <td>{{ obj.lastName }}</td>
+          <td>
+            {{ obj.email }}
+          </td>
+          <td [ngStyle]="{ color: obj.status ? 'green' : 'red' }">
+            {{ obj.departement.firstName }}
+            <p>Status: {{ obj.status ? "true" : "false" }}</p>
+          </td>
+
+          <td>
+            <!-- <app-confirm-dialog>  -->
+            <img src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
+              alt="Example Image"
+              data-bs-toggle="modal"
+              (click)="userDelete(obj)"
+            />
+            <!-- </app-confirm-dialog>  -->
+          </td>
+
+          <td>
+            <img
+              src="assets/images/icons8-modifier-64.png"  width="40px" height="40px"
+              alt="Example Image"
+              (click)="openUpdateModalUser(obj)"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class="flex-items">
+    <div class="card add-item">
+      <div class="card-header">
+        <h2 class="flex-items" style="color:#c972ac;font-style: italic; text-align: center;">ajouter un utilisateur</h2>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> Intégration Professionnelle</h5>
+        <p class="card-text"style="font-style: normal; text-align:justify;">
+          Dans cet partie traite de l'intégration professionnelle des nouveaux employés dans l'entreprise, 
+          en mettant l'accent sur un processus de recrutement rigoureux pour sélectionner des candidats qualifiés.
+           Une fois choisis, les nouveaux employés recevront un accueil chaleureux et une formation complète sur la culture d'entreprise et les procédures internes.
+            L'affectation dans les différents départements sera effectuée en tenant compte des compétences, des expériences et des préférences professionnelles de chaque employé, tout en veillant à équilibrer la charge de travail de manière équitable.
+             L'objectif est de créer un environnement de travail collaboratif et positif où chaque employé se sentira valorisé et motivé pour contribuer efficacement aux projets de l'entreprise.
+        </p>
+        <button class="btn btn-primary" (click)="openModal()">Show Dialog</button>
+      </div>
+    </div>
+  </div>
+
+</div>

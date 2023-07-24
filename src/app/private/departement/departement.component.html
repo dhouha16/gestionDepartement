@@ -1,0 +1,37 @@
+<div class="container px-5">
+  <div class="title-item flex-items">
+    <h1 style="font-style: italic; text-align: center; color: #df53b0;" >
+      Gestion depatement
+    </h1>
+  </div>
+  <div class="table-item">
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name of Departement</th>
+        <th scope="col">supprimer</th>
+        <th scope="col">ajouter</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of _department; let i = index">
+        <!-- <td style="width: 5%" class="text-center" scope="row">
+        </td> -->
+        <td>{{ obj.id }} </td>
+        <td>{{ obj.firstName }}</td>
+        <td> <img src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
+          alt="Example Image"
+          data-bs-toggle="modal"
+        /></td>
+        <td> <img src="assets/images/icons8-plus-key-100.png" width="40px" height="40px"
+          alt="Example Image"
+          data-bs-toggle="modal"
+        /></td>
+      </tr>
+     
+      </tbody>
+  </table>
+</div>
+</div>

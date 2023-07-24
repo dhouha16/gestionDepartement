@@ -59,5 +59,18 @@ export class EmployeeService {
   UserDelete(id: number ){
     return this.http.delete(this.path + '/users/'+id)
   }
+
+  updateUser(data: any, id: any) {
+    const options = this.createRequestOptions();
+    return this.http
+      .put<any>(this.path + '/users/'+id, data,{headers: options})
+      .pipe(retry(0), catchError(this.traitementErreur));
+  }
+  getUserById(id:any) {
+    return this.http
+      .get(this.path + '/users/'+id)
+      .pipe(retry(0), catchError(this.traitementErreur));
+  }
+
   
 }

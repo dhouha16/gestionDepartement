@@ -67,9 +67,8 @@ onSubmit(){
     "status":this.myForm.controls['status'].value,
   }
   this.addUser.emit(user);
-
-
 }
+
 /***** */
 //  save(data:any){
 //   this.activeModal.close(data);

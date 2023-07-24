@@ -1,0 +1,85 @@
+
+  <!-- <div class="modal-dialog modal-lg"> -->
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">update User</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="activeModal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body row">
+        <form [formGroup]="myForm">
+          <div class="form-group mt-4 col-xs-3">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              formControlName="firstName"
+              class="form-control"
+              id="firstName"
+           
+            />
+          </div>
+          <div class="form-group mt-4 col-xs-3">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              class="form-control"
+              id="lastName"
+              
+            />
+          </div>
+  
+          <div class="form-group mt-4 col-xs-3">
+            <label for="email">email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              id="lastName"
+            />
+          </div>
+  
+          <div class="form-group mt-4 col-xs-3">
+            <label for="departement">Select departement</label>
+            <select formControlName="departement">
+                <option [ngValue]="user?.departement">{{ user?.departement.firstName }}</option>
+                <option *ngFor="let departement of departement" [ngValue]="user?.department.id">{{ user.department.firstName }}</option>
+              <!-- <option
+                *ngFor="let departement of departement"
+                [value]="departement?.id"
+              > {{ departement?.id }}
+              </option> -->
+            </select>
+          </div>
+
+          <div class="form-group mt-4 col-xs-2">
+            <label for="status">check status</label>
+            <input type="checkbox" formControlName="status" id="status" />
+            <p>
+              Status: {{ myForm.controls["status"].value ? "true" : "false" }}
+            </p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="onUpdate(user?.id)">
+          Submit
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="activeModal.close('close click')"
+        >
+          close
+        </button>
+      </div>
+    <!-- </div> -->
+  
+  
+
+
+
+

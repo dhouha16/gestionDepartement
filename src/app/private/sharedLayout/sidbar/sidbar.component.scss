@@ -1,4 +1,3 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
   font-family: "Poppins", sans-serif;
   background: #fafafa;
@@ -75,7 +74,7 @@ a:focus {
 }
 #sidebar ul li a:hover {
   color: #7386d5;
-  background: #fff;
+  background: hsl(0, 0%, 100%);
 }
 
 #sidebar ul li.active > a,
@@ -130,18 +129,6 @@ a.article:hover {
   transition: all 0.3s;
 }
 
-@media (maz-width: 768px) {
-  #sidebar {
-    margin-left: -250px;
-  }
-  #sidebar.active {
-    margin-left: 0px;
-  }
-  #sidebarCollapse span {
-    display: none;
-  }
-}
-
 .container-flex{
   display: flex;
   flex-direction: row;
@@ -159,8 +146,8 @@ a.article:hover {
 
 }
 .container-flex-list-sideBar{
-  padding-bottom: 130%;
-  min-height: 100vh;
+  padding-bottom: 314%;
+  min-height: 150vh;
   display: flex;
   flex-direction: column;
   justify-content:center;

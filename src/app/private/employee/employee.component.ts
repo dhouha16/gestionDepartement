@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../shared/services/employee.service';
+
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
-import { User } from '../models/Users';
-import { DepartementComponent } from '../departement/departement.component';
-import { DepartementService } from '../shared/services/departement.service';
-import { ConfirmDialogService } from '../shared/services/confirm-dialog.service';
+
+
+
+
 import Swal from "sweetalert2";
-import { ModalService } from '../shared/services/modal.service';
+
 //import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
-import { ModalComponent } from '../sharedConfig/modal/modal.component';
+
 import {NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeService } from 'src/app/shared/services/employee.service';
+import { DepartementService } from 'src/app/shared/services/departement.service';
+import { User } from 'src/app/models/Users';
+import { ModalComponent } from 'src/app/sharedConfig/modal/modal.component';
+import { ModalUpdateUserComponent } from 'src/app/sharedConfig/modal-update-user/modal-update-user.component';
 // import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
@@ -21,6 +26,7 @@ export class EmployeeComponent implements OnInit {
   myForm: FormGroup;
   _users:any= [];
   _departments:any= [];
+  _user:any;
   // status:boolean=false;
   isCreatedForm:boolean=false;
   title = 'appBootstrap';
@@ -140,7 +146,7 @@ export class EmployeeComponent implements OnInit {
       Swal.fire({
         icon: "error",
         title: "Un problème est survenu!",
-        text: "le droit est déja utilisé",
+        text: "l'uilisateur est déja existe",
       });
     }
    
@@ -148,7 +154,7 @@ export class EmployeeComponent implements OnInit {
     openModal() {
       console.log(this._departments);
       const modalRef = this.modalService.open(ModalComponent, {
-        size: 'xl',
+        size: 'md',
         centered: true,
         windowClass: 'dark-modal'
       });
@@ -180,8 +186,64 @@ export class EmployeeComponent implements OnInit {
         }
       );
     }
-    
+
+    getUserById(id:number){
+      this.employeeService.getUserById(id).subscribe(
+        (res: any) => {
+          this._user = res;
+          console.log(res)
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  
+
+    openUpdateModalUser(_user:any) {
+      const modalRef = this.modalService.open(ModalUpdateUserComponent);
+      modalRef.componentInstance.user = _user;
+      modalRef.componentInstance.departement = this._departments;
+      //set modalCloseResult to empty string
+      // this.modalCloseResult = '';
+  
+      modalRef.componentInstance.updateUser.subscribe((data: any) => {
+        this.updateUser(data)
+        this.modalCloseResult = data;
+        this.modalService.dismissAll();
+      });
+    }
+
+    updateUser(user:any){
+  
+      this.employeeService.updateUser(user,user.id).subscribe(  
+        (res) => {
+          Swal.fire(
+            'Good job!',
+            'You clicked the button!',
+            'success'
+          )
+          //alert("User added");
+          console.log(res);
+          this.dispaly();
+        },
+        (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          })
+          console.log(err);
+        }
+      );
+
+    }
+
 }
+   
+    
+
+
 
 
 
