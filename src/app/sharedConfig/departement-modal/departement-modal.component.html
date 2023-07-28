@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">add User</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body row">
+    <form [formGroup]="myForm">
+      <div class="form-group mt-4 col-xs-3">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          id="firstName"
+        
+        />
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+      Submit
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="activeModal.close('close click')"
+    >
+      close
+    </button>
+  </div>

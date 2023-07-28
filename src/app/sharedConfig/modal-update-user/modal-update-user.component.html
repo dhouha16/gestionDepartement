@@ -42,19 +42,19 @@
             />
           </div>
   
-          <div class="form-group mt-4 col-xs-3">
+         <div class="form-group mt-4 col-xs-3">
             <label for="departement">Select departement</label>
             <select formControlName="departement">
-                <option [ngValue]="user?.departement">{{ user?.departement.firstName }}</option>
-                <option *ngFor="let departement of departement" [ngValue]="user?.department.id">{{ user.department.firstName }}</option>
-              <!-- <option
+                <!-- <option [ngValue]="user?.departement.id"  [(ngModel)]="user.departement">{{ user?.departement.firstName }}</option> -->
+                <!-- <option *ngFor="let departement of departement" [ngValue]="user?.department.id">{{ user.department.firstName }}</option> -->
+              <option
                 *ngFor="let departement of departement"
-                [value]="departement?.id"
-              > {{ departement?.id }}
-              </option> -->
+                [value]="departement.id"
+              > {{ departement?.firstName }}
+              </option>
             </select>
-          </div>
-
+          </div> 
+          
           <div class="form-group mt-4 col-xs-2">
             <label for="status">check status</label>
             <input type="checkbox" formControlName="status" id="status" />

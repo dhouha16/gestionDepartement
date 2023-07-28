@@ -9,6 +9,9 @@ import { FooterComponent } from './sharedLayout/footer/footer.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartementComponent } from './departement/departement.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 
@@ -17,8 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PrivateRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    NgSelectModule,
   // Add any other required modules
   ],
   declarations: [
@@ -28,10 +31,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     EmployeeComponent,
     DepartementComponent,
+    ScheduleEmployeeComponent,
+    
     // Declare your private component here
   ],
   exports: [
     BaseLayoutComponent // Export the component you want to make accessible outside the module
-  ]
+  ],
+
 })
 export class PrivateModule { }

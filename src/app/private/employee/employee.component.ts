@@ -215,7 +215,6 @@ export class EmployeeComponent implements OnInit {
     }
 
     updateUser(user:any){
-  
       this.employeeService.updateUser(user,user.id).subscribe(  
         (res) => {
           Swal.fire(
@@ -236,7 +235,6 @@ export class EmployeeComponent implements OnInit {
           console.log(err);
         }
       );
-
     }
 
 }

@@ -17,6 +17,8 @@ import { SidbarComponent } from './private/sharedLayout/sidbar/sidbar.component'
 import { HeaderComponent } from './private/sharedLayout/header/header.component';
 import { ModalUpdateUserComponent } from './sharedConfig/modal-update-user/modal-update-user.component';
 import { LoginComponent } from './auth/login/login.component';
+import { DepartementModalComponent } from './sharedConfig/departement-modal/departement-modal.component';
+
 
 
 
@@ -29,7 +31,8 @@ import { LoginComponent } from './auth/login/login.component';
     ConfirmDialogComponent,
     ModalComponent,
     ModalUpdateUserComponent,
-    LoginComponent
+    LoginComponent,
+    DepartementModalComponent,
  
   ],
   imports: [
@@ -40,7 +43,9 @@ import { LoginComponent } from './auth/login/login.component';
     ReactiveFormsModule,
     NgbModule,
     NgbModalModule,
-    PrivateModule
+    PrivateModule,
+
+
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]

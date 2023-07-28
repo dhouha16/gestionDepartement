@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
+// Instead of using tilde (~)
 @import '~bootstrap/scss/bootstrap';
+
+// Use relative paths like this
+@import 'node_modules/bootstrap/scss/bootstrap';
+

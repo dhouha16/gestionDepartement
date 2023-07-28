@@ -27,26 +27,29 @@ export class ModalUpdateUserComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.user)
     this.myForm = this.formBuilder.group({
       firstName: [this.user.firstName, Validators.required],
       lastName: [this.user.lastName, Validators.required],
       email: [this.user.email, Validators.required],
-      departement: [this.user.departement, Validators.required],
+      departement: [this.user.departement.id, Validators.required],
       status: [this.user.status]
     });
+    // this.departement = this.departement.filter((w: any) => {
+    //   console.log("w.id ---------------- " + w.id);
+    //   console.log("user.departement.id ---------------- " + this.user.departement.id);
+    //   return w.id !== this.user.departement.id;
+    // });
+    console.log('departement',this.departement);
+
   }
-  // passDateFromModal(): void {
-  //   let modalData = { from: 'edupala', message: 'Back from modal' };
-  //   this.updateUser.emit(modalData);
-  //   this.activeModal.dismiss();
-  // }
 
   onUpdate(idUser:any){
     console.log(this.myForm.value)
     console.log(this.myForm.controls['firstName'].value);
     console.log(this.myForm.controls['status'].value);
   
-    const user:any={
+    const user:User={
       "id":this.user.id,
       "firstName":this.myForm.controls['firstName'].value,
       "lastName":this.myForm.controls['lastName'].value,

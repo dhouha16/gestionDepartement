@@ -1,5 +1,5 @@
 export interface Departement {
-    id:number
+    id?:number
     firstName?: string;
   
   }

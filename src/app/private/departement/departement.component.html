@@ -5,14 +5,20 @@
     </h1>
   </div>
   <div class="table-item">
+     <img src="assets/images/icons8-plus-key-100.png" width="40px" height="40px"
+      alt="Example Image"
+      data-bs-toggle="modal"
+      (click)="openModal(null)"
+    />
 
 <table class="table">
+
     <thead>
       <tr>
         <th scope="col">id</th>
         <th scope="col">name of Departement</th>
         <th scope="col">supprimer</th>
-        <th scope="col">ajouter</th>
+        <th scope="col">update</th>
       </tr>
     </thead>
     <tbody>
@@ -23,11 +29,11 @@
         <td>{{ obj.firstName }}</td>
         <td> <img src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
           alt="Example Image"
-          data-bs-toggle="modal"
+          data-bs-toggle="modal" (click)="deleteDepatement(obj)"
         /></td>
-        <td> <img src="assets/images/icons8-plus-key-100.png" width="40px" height="40px"
+        <td> <img src="assets/images/icons8-modifier-64.png" width="40px" height="40px"
           alt="Example Image"
-          data-bs-toggle="modal"
+          data-bs-toggle="modal" (click)="openModal(obj)"
         /></td>
       </tr>
      

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { Departement } from 'src/app/models/Departement';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +46,28 @@ getAllDepartement() {
   return this.http
     .get(this.path + '/departement')
     .pipe(retry(0), catchError(this.traitementErreur));
+}
+deleteDepartement(id: number ){
+  return this.http.delete(this.path + '/departement/'+id)
+}
+createDepartement(departement:Departement){
+  return this.http.post(this.path + '/departement',departement)
+}
+updateDepartement(data: any, id: any) {
+  const options = this.createRequestOptions();
+  return this.http
+    .put<any>(this.path + '/departement/'+id, data,{headers: options})
+    .pipe(retry(0), catchError(this.traitementErreur));
+}
+getDepartementById(id:any) {
+  return this.http
+    .get(this.path + '/departement/'+id)
+    .pipe(retry(0), catchError(this.traitementErreur));
+}
+getUserDepartementId(id:any){
+  return this.http
+  .get(this.path + '/departement/users/'+id)
+  .pipe(retry(0), catchError(this.traitementErreur));
 }
 
 }
