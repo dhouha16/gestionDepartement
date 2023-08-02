@@ -1,0 +1,16 @@
+
+.item {
+    align-self: flex-end;
+  }
+
+  .container-flex {
+    display: flex;
+    flex-direction: column ;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    row-gap: 10px;
+  }
+
+ .flex-items {
+  padding: 50px 0px; 
+}

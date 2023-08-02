@@ -69,5 +69,14 @@ getUserDepartementId(id:any){
   .get(this.path + '/departement/users/'+id)
   .pipe(retry(0), catchError(this.traitementErreur));
 }
-
+updateUserDepartementId(id:any,data: any){
+  return this.http
+  .put(this.path + '/departement/users/'+id,data)
+  .pipe(retry(0), catchError(this.traitementErreur));
+}
+getProjectsDepartementId(id:any){
+  return this.http
+  .get(this.path + '/departement/projects/'+id)
+  .pipe(retry(0), catchError(this.traitementErreur));
+}
 }

@@ -27,8 +27,8 @@
     </div>
   </div>
 </div>
-<div *ngIf="showMyContainer">
-  <div class="table-item" *ngIf="showMyContainer">
+<div >
+  <div class="table-item" >
     <table class="table" st>
       <thead>
         <tr>
@@ -52,20 +52,17 @@
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckChecked"
-                [checked]="obj.status"
+                [(ngModel)]="obj.status"
               />
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <button (click)="updateUsersDepartement(_usersdepartments.id)">valider</button>
+    <button class="btn btn-primary"  (click)="validerPresence(_usersdepartments.id)">valider</button>
   </div>
 </div>
 </div>
 
-<button (click)="showMyContainer=!showMyContainer">Show/Hide</button>
 
-<div *ngIf="showMyContainer">
-     your code
-</div>
+

@@ -1,0 +1,60 @@
+<div class="container px-5">
+    <div class="title-item flex-items">
+      <form [formGroup]="myForm">
+        <ng-select
+          [items]="_departments"
+          [searchFn]="customSearchFn"
+          bindLabel="firstName"
+          bindValue="id"
+          placeholder="Select department"
+          [(ngModel)]="selectedDepartmentId"
+          formControlName="departement"
+          (ngModelChange)="onDepartmentSelected()"
+        >
+        </ng-select>
+      </form>
+    </div>
+  
+    <div class="title-item flex-items">
+    <div class="card">
+      <h5 class="card-header">departement</h5>
+      <div class="card-body">
+        <h5 class="card-title">Nom de departement :</h5>
+        <p class="card-text">
+          {{_departments.firstName}}
+        </p>
+        <a class="btn btn-primary" (click)="openaddModalDepartementProject(selectedDepartmentId)">Go somewhere</a>
+      </div>
+    </div>
+  </div> 
+
+    <div class="table-item">
+      <table class="table" st>
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">description</th>
+            <th scope="col">modifier</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="_projectDepartments?.projects">
+          <tr *ngFor="let obj of _projectDepartments.projects; let i = index">
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.description }}</td>
+            <td>
+              <img
+                src="assets/images/icons8-modifier-64.png"  width="40px" height="40px"
+                alt="Example Image"
+              
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <button class="btn btn-primary"  (click)="validerPresence(_usersdepartments.id)">valider</button> -->
+    </div> 
+  </div>
+  
+  
+  
+  

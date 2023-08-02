@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Departement } from 'src/app/models/Departement';
 import { DepartementService } from 'src/app/shared/services/departement.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-schedule-employee',
@@ -12,7 +13,7 @@ export class ScheduleEmployeeComponent implements OnInit {
   myForm: FormGroup;
  public _departments:any= [];
  public _usersdepartments:any= [];
- public listUsersDepartementId:any= [];
+//  public listUsersDepartementId:any= [];
  public selectedDepartmentId: any;
  showMyContainer: boolean = false;
  id: any;
@@ -62,7 +63,7 @@ export class ScheduleEmployeeComponent implements OnInit {
     this.departementService.getUserDepartementId(id).subscribe(
       (res: any) => {
         this._usersdepartments = res;
-        this.listUsersDepartementId = res.users.length > 0 ? res.users : null;
+        this._usersdepartments = res.users.length > 0 ? res : null;
         //ou
         // if( res.users.length > 0){
         //   this.listUsersDepartementId =res.users}else{
@@ -77,15 +78,39 @@ export class ScheduleEmployeeComponent implements OnInit {
     );
   }
 
-  validerPresence() {
-    const _listePresenceUpdated: { users: { status: any }[] } = { users: [] };
-    this.listUsersDepartementId.forEach((elem: any = {}) => {
+  validerPresence(id:any) {
+    const _listePresenceUpdated: { users: {id:any, status: any }[] } = { users: [] };
+    console.log(this._usersdepartments);
+
+    this._usersdepartments.users.forEach((elem: any) => {
       _listePresenceUpdated.users.push({
+        id:elem.id,
         status: elem.status,
       });
+     
     });
+    console.log("elem --- "+ JSON.stringify(_listePresenceUpdated) )
     // Rest of your code (if any)
-   oo
+    this.departementService
+      .updateUserDepartementId( this.selectedDepartmentId,_listePresenceUpdated)
+      .subscribe(() => {
+       console.log('La liste modifiée avec succès', 'succés!');
+   
+        Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        )
+      } ,
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        })
+        console.log(err);
+      });
+   
   }
  
   
@@ -93,7 +118,7 @@ export class ScheduleEmployeeComponent implements OnInit {
   
   
     // Rest of your code (if any)
-  }
+  
   // updateUsersDepartement(id:any){
   //   const _listePresenceUpdated = { assiduites: [] };
   //   this._usersdepartments.users.forEach((elem) => {

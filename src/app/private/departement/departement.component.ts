@@ -118,8 +118,6 @@ updateDepartement(departement:any){
   );
 }
 
-
-
 openModal(_department:any) {
   console.log(this._department);
   const modalRef = this.modalService.open(DepartementModalComponent, {
@@ -144,4 +142,6 @@ console.log("++++++++++++++++++ "+_department?.id)
 
 });
 }
+
+
 }

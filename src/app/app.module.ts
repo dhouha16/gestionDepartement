@@ -18,6 +18,8 @@ import { HeaderComponent } from './private/sharedLayout/header/header.component'
 import { ModalUpdateUserComponent } from './sharedConfig/modal-update-user/modal-update-user.component';
 import { LoginComponent } from './auth/login/login.component';
 import { DepartementModalComponent } from './sharedConfig/departement-modal/departement-modal.component';
+import { ProjectModalComponent } from './sharedConfig/project-modal/project-modal.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -33,7 +35,8 @@ import { DepartementModalComponent } from './sharedConfig/departement-modal/depa
     ModalUpdateUserComponent,
     LoginComponent,
     DepartementModalComponent,
- 
+    ProjectModalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import { DepartementModalComponent } from './sharedConfig/departement-modal/depa
     NgbModule,
     NgbModalModule,
     PrivateModule,
-
+    NgSelectModule,
 
   ],
   providers: [NgbActiveModal],
