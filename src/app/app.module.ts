@@ -20,6 +20,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { DepartementModalComponent } from './sharedConfig/departement-modal/departement-modal.component';
 import { ProjectModalComponent } from './sharedConfig/project-modal/project-modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AddTasksModalComponent } from './sharedConfig/add-tasks-modal/add-tasks-modal.component';
+import { ListProjectTasksModalComponent } from './sharedConfig/list-project-tasks-modal/list-project-tasks-modal.component';
 
 
 
@@ -36,6 +38,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     DepartementModalComponent,
     ProjectModalComponent,
+    AddTasksModalComponent,
+    ListProjectTasksModalComponent,
     
   ],
   imports: [

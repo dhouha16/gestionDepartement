@@ -161,17 +161,13 @@ export class EmployeeComponent implements OnInit {
       modalRef.componentInstance.departement = this._departments;
       //set modalCloseResult to empty string
       //  this.modalCloseResult = '';
-
     modalRef.componentInstance.addUser.subscribe((data: any) => {
       if(data){
-        
-       
         this.addUser(data)
         this.modalService.dismissAll();
         
       }
     console.log(data)
-
     });
     }
     addUser(user: User) {
@@ -205,7 +201,7 @@ export class EmployeeComponent implements OnInit {
       modalRef.componentInstance.user = _user;
       modalRef.componentInstance.departement = this._departments;
       //set modalCloseResult to empty string
-      // this.modalCloseResult = '';
+      //this.modalCloseResult = '';
   
       modalRef.componentInstance.updateUser.subscribe((data: any) => {
         this.updateUser(data)

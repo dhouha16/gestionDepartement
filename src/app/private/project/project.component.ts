@@ -4,6 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from 'src/app/models/Project';
 import { DepartementService } from 'src/app/shared/services/departement.service';
 import { ProjectService } from 'src/app/shared/services/project.service';
+import { TaskService } from 'src/app/shared/services/task.service';
+import { AddTasksModalComponent } from 'src/app/sharedConfig/add-tasks-modal/add-tasks-modal.component';
+import { ListProjectTasksModalComponent } from 'src/app/sharedConfig/list-project-tasks-modal/list-project-tasks-modal.component';
 import { ProjectModalComponent } from 'src/app/sharedConfig/project-modal/project-modal.component';
 
 @Component({
@@ -13,13 +16,13 @@ import { ProjectModalComponent } from 'src/app/sharedConfig/project-modal/projec
 })
 export class ProjectComponent implements OnInit {
   myForm: FormGroup;
-
+  _project:any;
   _department:any;
   public _projectDepartments:any
 public _departments:any= [];
 public selectedDepartmentId:any;
 
-constructor(private formBuilder:FormBuilder,private departementService:DepartementService,private modalService: NgbModal,private projectService:ProjectService) {
+constructor(private formBuilder:FormBuilder,private departementService:DepartementService,private modalService: NgbModal,private projectService:ProjectService, private taskService:TaskService) {
   this.myForm = this.formBuilder.group({
     departement: [null, Validators.required],
   });
@@ -85,20 +88,58 @@ constructor(private formBuilder:FormBuilder,private departementService:Departeme
       centered: true,
       windowClass: 'dark-modal'
     });
-    console.log("hhiii",this.selectedDepartmentId);
-    
-   
     modalRef.componentInstance._projectDepartmentsId = this.selectedDepartmentId;
-    //set modalCloseResult to empty string
-    //  this.modalCloseResult = '';
-  
+
   modalRef.componentInstance.projectOutPut.subscribe((data: any) => {
        this.postProject(data)
       this.modalService.dismissAll();
-   
-  // console.log("++++++++++++++++++ "+_department?.id)
-  
   });
+  }
+  openaddTasksModal(_project:any){
+    const modalRef = this.modalService.open(AddTasksModalComponent, {
+      size: 'md',
+      centered: true,
+      windowClass: 'dark-modal'
+    });
+    this._project=_project;
+    console.log("project --------- "+JSON.stringify(_project))
+    modalRef.componentInstance.project = _project
+    modalRef.componentInstance.projectTasksOutPut.subscribe((data: any) => {
+      this.postTasksProject(data)
+     this.modalService.dismissAll();
+ });
+
+  }
+
+  postTasksProject(project: Project){
+    alert("hiiiiiiiiiiii"+this._project.id)
+    this.taskService.createTasks(project,this._project.id).subscribe((res)=>{
+      alert("tasks added")
+      console.log(res); 
+      this.getProjectDepartementId(this.selectedDepartmentId)
+
+    });
+  }
+  openListTasksModal(_project:any){
+    const modalRef = this.modalService.open(ListProjectTasksModalComponent, {
+      size: 'xl',
+      centered: true,
+      windowClass: 'dark-modal'
+    });
+    modalRef.componentInstance.project = _project
+    modalRef.componentInstance.projectTasksOutPut.subscribe((data: any) => {
+      this.updateProjectTask(data)
+      this.modalService.dismissAll();
+    });
+  }
+
+  updateProjectTask(data:any){
+    this.taskService.updateTask(data,data.id).subscribe((res)=>{
+      alert("tasks updated")
+      console.log(res); 
+      this.getProjectDepartementId(this.selectedDepartmentId)
+
+    });
   }
 
 }

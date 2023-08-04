@@ -34,6 +34,7 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">description</th>
+            <th scope="col">ajouter une/plusieur tache</th>
             <th scope="col">modifier</th>
           </tr>
         </thead>
@@ -43,9 +44,16 @@
             <td>{{ obj.description }}</td>
             <td>
               <img
+                src="assets/images/icons8-ajouter-100.png"  width="40px" height="40px"
+                alt="Example Image"
+                (click)="openaddTasksModal(obj)"
+              />
+            </td>
+            <td>
+              <img
                 src="assets/images/icons8-modifier-64.png"  width="40px" height="40px"
                 alt="Example Image"
-              
+                (click)="openListTasksModal(obj)"
               />
             </td>
           </tr>

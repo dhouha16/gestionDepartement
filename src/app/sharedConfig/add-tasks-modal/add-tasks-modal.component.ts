@@ -1,58 +1,34 @@
-import { Component, OnInit,Input,Output,EventEmitter} from '@angular/core';
+import { Component, EventEmitter,Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from 'src/app/models/Project';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
+import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
-  selector: 'app-project-modal',
-  templateUrl: './project-modal.component.html',
-  styleUrls: ['./project-modal.component.scss']
+  selector: 'app-add-tasks-modal',
+  templateUrl: './add-tasks-modal.component.html',
+  styleUrls: ['./add-tasks-modal.component.scss']
 })
-export class ProjectModalComponent implements OnInit {
+export class AddTasksModalComponent implements OnInit {
   form: FormGroup;
+  @Input()  project: any;
+  @Output() projectTasksOutPut: EventEmitter<Project> = new EventEmitter<Project>();
+  selecteduser:any
   users:any=[]
-  @Input()  _projectDepartmentsId: any;
-  @Output() projectOutPut: EventEmitter<Project> = new EventEmitter<Project>();
-   selecteduser:any
 
-  itemsList: Project[] = [];
-
-
-  constructor(private formBuilder: FormBuilder,public activeModal: NgbActiveModal,private employeeService:EmployeeService) { 
+  constructor(private formBuilder: FormBuilder,public activeModal: NgbActiveModal,private taskService:TaskService,private employeeService:EmployeeService) {
     this.form = this.formBuilder.group({
-      departement: ["", Validators.required],
-      description: ["", Validators.required],
       tasks: this.formBuilder.array([this.getTasksItem()])
     })
-    
-  }
-
+   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      departement: [this._projectDepartmentsId, Validators.required],
-      description: ["", Validators.required],
+      
       tasks: this.formBuilder.array([this.getTasksItem()])
     });
-    console.log("coucou",this._projectDepartmentsId);
-    this.dispaly();
-    console.log( this.form.value);
-    
-  }
-
-  
-  dispaly() {
-    this.employeeService.getAllUsers().subscribe(
-      (res: any) => {
-        this.users = res;
-        console.log(res)
-        console.log("----------- display users "+JSON.stringify(this.users))
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.dispaly() 
   }
 
   /**
@@ -81,7 +57,7 @@ export class ProjectModalComponent implements OnInit {
    * Initialize the form
    */
   private initForm() {
-    console.log("on nit ++++ "+this._projectDepartmentsId)
+    console.log("on nit ++++ "+this.project)
     
   }
 
@@ -102,22 +78,27 @@ export class ProjectModalComponent implements OnInit {
     return item.firstName.toLocaleLowerCase().indexOf(term) > -1;
   }
 
-  onUsersSelected(){
-    console.log('Selected user ID: ' + this.selecteduser);
-    console.log('Selected department ID: ' + this._projectDepartmentsId);
+  dispaly() {
+    this.employeeService.getAllUsers().subscribe(
+      (res: any) => {
+        this.users = res;
+        console.log(res)
+        console.log("----------- display users "+JSON.stringify(this.users))
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   onSubmit(){
     console.log(this.form.value)
     const project:Project={
-      "description":this.form.controls['description'].value,
-      "departement":{id:Number(this.form.controls['departement'].value)},
       "tasks":this.form.value.tasks
     }
-    console.log("departement on submit ------ "+project.description)
     console.log("departement on submit ------ "+JSON.stringify(project.tasks))
-    this.projectOutPut.emit(project);
+    this.projectTasksOutPut.emit(project);
   }
 
-  
+
 }

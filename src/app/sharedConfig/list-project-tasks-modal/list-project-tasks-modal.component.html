@@ -1,0 +1,47 @@
+<div class="table-item">
+    <table class="table" st>
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">description</th>
+          <th scope="col">responsable de tache</th>
+          <th scope="col">supprimer</th>
+          <th scope="col">modifier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  [formGroup]="form" *ngFor="let obj of project.tasks; let i = index">
+           
+            <td>  <input type="text" formControlName="id_{{i}}" class="form-control" id="id{{i}}" readonly /></td> 
+            <td>  <input type="text" formControlName="description_{{i}}" class="form-control" id="description{{i}}"/></td>
+            <td>  <ng-select [items]="users"  bindLabel="firstName" bindValue="id" placeholder="Select employee"formControlName="users_{{i}}">  
+           </ng-select> </td>
+     
+          <td>
+            <!-- <app-confirm-dialog>  -->
+            <img *ngIf="show" src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
+              alt="Example Image"
+              data-bs-toggle="modal"
+            />
+            <!-- </app-confirm-dialog>  -->
+          </td>
+
+          <td>
+            <img *ngIf="show==true"
+              src="assets/images/icons8-modifier-64.png"  width="40px" height="40px" 
+              alt="Example Image" (click)="onupdateTask(i,true)"
+            />
+
+            <img
+            src="assets/images/icons8-annuler-48.png"  width="40px" height="40px"  *ngIf="showTabsArray === undefined ||showTabsArray == i"
+            alt="Example Image"
+          />
+          <img 
+          src="assets/images/icons8-ok-48.png"  width="40px" height="40px" *ngIf="showTabsArray === undefined ||showTabsArray == i"
+          alt="Example Image" 
+        />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
