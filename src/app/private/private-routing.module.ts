@@ -17,6 +17,9 @@ const routes: Routes = [
     },
     {
       path:'departement',component:DepartementComponent
+    },
+    {
+      path:'project',component:ProjectComponent
     }
     ,{
        path:'schedule',component:ScheduleEmployeeComponent
