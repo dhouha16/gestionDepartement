@@ -21,7 +21,7 @@
     <div class="card-body">
       <h5 class="card-title">Nom de departement :</h5>
       <p class="card-text">
-        {{_usersdepartments.firstName}}
+        {{_usersdepartments?.firstName}}
       </p>
       <a href="#" class="btn btn-primary" (click)="showMyContainer=!showMyContainer">Go somewhere</a>
     </div>
@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let obj of _usersdepartments.users; let i = index">
+        <tr *ngFor="let obj of _usersdepartments?.users; let i = index">
           <!-- <td style="width: 5%" class="text-center" scope="row">
           </td> -->
           <td>{{ obj.id }}</td>

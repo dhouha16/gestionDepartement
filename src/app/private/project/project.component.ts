@@ -8,6 +8,7 @@ import { TaskService } from 'src/app/shared/services/task.service';
 import { AddTasksModalComponent } from 'src/app/sharedConfig/add-tasks-modal/add-tasks-modal.component';
 import { ListProjectTasksModalComponent } from 'src/app/sharedConfig/list-project-tasks-modal/list-project-tasks-modal.component';
 import { ProjectModalComponent } from 'src/app/sharedConfig/project-modal/project-modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-project',
@@ -21,6 +22,8 @@ export class ProjectComponent implements OnInit {
   public _projectDepartments:any
 public _departments:any= [];
 public selectedDepartmentId:any;
+persistentToast: any = null;
+
 
 constructor(private formBuilder:FormBuilder,private departementService:DepartementService,private modalService: NgbModal,private projectService:ProjectService, private taskService:TaskService) {
   this.myForm = this.formBuilder.group({
@@ -127,19 +130,34 @@ constructor(private formBuilder:FormBuilder,private departementService:Departeme
       windowClass: 'dark-modal'
     });
     modalRef.componentInstance.project = _project
-    modalRef.componentInstance.projectTasksOutPut.subscribe((data: any) => {
-      this.updateProjectTask(data)
-      this.modalService.dismissAll();
-    });
+    // modalRef.componentInstance.projectTasksOutPut.subscribe((data: any) => {
+    //   this.updateProjectTask(data)
+    //   this.modalService.dismissAll();
+    // });
   }
 
-  updateProjectTask(data:any){
-    this.taskService.updateTask(data,data.id).subscribe((res)=>{
-      alert("tasks updated")
-      console.log(res); 
-      this.getProjectDepartementId(this.selectedDepartmentId)
+  // updateProjectTask(data:any){
+  //   this.taskService.updateTask(data,data.id).subscribe((res)=>{
+  //     const Toast = Swal.mixin({
+  //       toast: true,
+  //       position: 'top-end',
+  //       showConfirmButton: false,
+  //       timer: 3000,
+  //       timerProgressBar: true,
+  //       didOpen: (toast) => {
+  //         toast.addEventListener('mouseenter', Swal.stopTimer)
+  //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+  //       }
+  //     })
+      
+  //     Toast.fire({
+  //       icon: 'success',
+  //       title: 'Signed in successfully'
+  //     })
+  //     console.log(res); 
+  //     // this.getProjectDepartementId(this.selectedDepartmentId)
 
-    });
-  }
+  //   });
+  // }
 
 }

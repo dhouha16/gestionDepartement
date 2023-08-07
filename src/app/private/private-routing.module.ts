@@ -7,6 +7,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { DepartementComponent } from './departement/departement.component';
 import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee.component';
 import { ProjectComponent } from './project/project.component';
+import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,10 @@ const routes: Routes = [
     }
     ,{
        path:'schedule',component:ScheduleEmployeeComponent
-    },{
-      path:'project',component:ProjectComponent
-   }
-]
-  }
+  },{
+    path:'projectEmployee',component:ProjectEmplyeesComponent
+},
+]}
 ];
 
 @NgModule({

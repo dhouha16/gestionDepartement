@@ -16,30 +16,20 @@
             <td>  <input type="text" formControlName="description_{{i}}" class="form-control" id="description{{i}}"/></td>
             <td>  <ng-select [items]="users"  bindLabel="firstName" bindValue="id" placeholder="Select employee"formControlName="users_{{i}}">  
            </ng-select> </td>
-     
+           <td>
+            <!-- <app-confirm-dialog>  -->
+              <img *ngIf="showTabsArray !== i" src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
+              alt="Edit Task" (click)="onupdateTask(i, true)" />
+          </td>
           <td>
             <!-- <app-confirm-dialog>  -->
-            <img *ngIf="show" src="assets/images/icons8-supprimer-100.png" width="40px" height="40px"
-              alt="Example Image"
-              data-bs-toggle="modal"
-            />
-            <!-- </app-confirm-dialog>  -->
-          </td>
-
-          <td>
-            <img *ngIf="show==true"
-              src="assets/images/icons8-modifier-64.png"  width="40px" height="40px" 
-              alt="Example Image" (click)="onupdateTask(i,true)"
-            />
-
-            <img
-            src="assets/images/icons8-annuler-48.png"  width="40px" height="40px"  *ngIf="showTabsArray === undefined ||showTabsArray == i"
-            alt="Example Image"
-          />
-          <img 
-          src="assets/images/icons8-ok-48.png"  width="40px" height="40px" *ngIf="showTabsArray === undefined ||showTabsArray == i"
-          alt="Example Image" 
-        />
+            <img *ngIf="showTabsArray !== i" src="assets/images/icons8-modifier-64.png" width="40px" height="40px"
+            alt="Edit Task" (click)="onupdateTask(i, true)" />
+            <!-- Show Cancel and Save buttons if showTabsArray is equal to index -->
+            <img *ngIf="showTabsArray === i" src="assets/images/icons8-annuler-48.png" width="40px" height="40px"
+              alt="Cancel" (click)="onupdateTask(i, false)" />
+            <img *ngIf="showTabsArray === i" src="assets/images/icons8-ok-48.png" width="40px" height="40px"
+              alt="Save" (click)="update(i)" />
           </td>
         </tr>
       </tbody>

@@ -25,10 +25,6 @@ import { ListProjectTasksModalComponent } from './sharedConfig/list-project-task
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +36,7 @@ import { ListProjectTasksModalComponent } from './sharedConfig/list-project-task
     ProjectModalComponent,
     AddTasksModalComponent,
     ListProjectTasksModalComponent,
+ 
     
   ],
   imports: [

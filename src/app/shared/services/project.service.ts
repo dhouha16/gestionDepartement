@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { Project } from 'src/app/models/Project';
-
+import { retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -43,5 +43,13 @@ export class ProjectService {
 createProject(project:Project){
   return this.http.post(this.path + '/project',project)
 }
+
+getUsersProject(id:any) {
+  return this.http
+    .get(this.path + '/project/users/'+id)
+    .pipe(retry(0), catchError(this.traitementErreur));
+}
+
+
 
 }

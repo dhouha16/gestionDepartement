@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from 'src/app/models/Project';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { TaskService } from 'src/app/shared/services/task.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-project-tasks-modal',
@@ -73,16 +74,16 @@ export class ListProjectTasksModalComponent implements OnInit {
   }
   onupdateTask(index:number,enable:boolean) {
     this.show==false
-   
-    
     const descriptionControl = this.form.get(`description_${index}`);
     const usersControl = this.form.get(`users_${index}`);
     if (descriptionControl!=null && usersControl!=null) {
     if (enable) {
+      this.showTabsArray = index; // Show the Cancel and Save icons for the clicked row
       descriptionControl.enable();
       usersControl.enable();
     
     } else {
+      this.showTabsArray = undefined; // Hide the Cancel and Save icons
       descriptionControl.disable();
       usersControl.disable();
     }
@@ -101,9 +102,38 @@ export class ListProjectTasksModalComponent implements OnInit {
     }
     console.log("dataTosend",data)
   }
-  // update(data:any,index:number){
-  //   this.onupdateTask(index)
-  //   this.projectTasksOutPut.emit(data);
-  // }
+  update(index:number){
+    let  data={
+      id:this.form.value['id_'+index],
+      description:this.form.value['description_'+index],
+      users:{
+        id:this.form.value['users_'+index]
+      }
+    }
+    // this.onupdateTask(index)
+    // this.projectTasksOutPut.emit(data);
+    this.showTabsArray = undefined;
+    this.taskService.updateTask(data,data.id).subscribe((res)=>{
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+      })
+      console.log(res); 
+      // this.getProjectDepartementId(this.selectedDepartmentId)
 
+    });
+}
+  
 }

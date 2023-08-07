@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ProjectComponent } from './project/project.component';
+import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 
 
 
@@ -34,6 +35,7 @@ import { ProjectComponent } from './project/project.component';
     DepartementComponent,
     ScheduleEmployeeComponent,
     ProjectComponent,
+    ProjectEmplyeesComponent,
     
     // Declare your private component here
   ],

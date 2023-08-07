@@ -1,0 +1,87 @@
+<div class="container px-5">
+    <div class="container-flex ">
+    <div class="title-item col-lg-6 p-2">
+      <form [formGroup]="myForm">
+        <ng-select
+          [items]="_departments"
+          [searchFn]="customSearchFn"
+          bindLabel="firstName"
+          bindValue="id"
+          placeholder="Select department"
+          [(ngModel)]="selectedDepartmentId"
+          formControlName="departement"
+          (ngModelChange)="onDepartmentSelected()"
+        >
+        </ng-select>
+      </form>
+    </div>
+
+    <div class="title-item col-lg-6 p-2">
+        <form [formGroup]="myForm">
+          <ng-select
+            [items]="_projects"
+            [searchFn]="customSearchFn"
+            bindLabel="description"
+            bindValue="id"
+            placeholder="Select project"
+            [(ngModel)]="selectedProjectId"
+            formControlName="departement"
+            (ngModelChange)="onProjectSelected()"
+          >
+          </ng-select>
+        </form>
+      </div>
+    </div>
+
+    <div class="title-item flex-items">
+    <div class="card">
+      <h5 class="card-header">departement</h5>
+      <div class="card-body">
+        <h5 class="card-title">Nom de departement :</h5>
+        <!-- <p class="card-text">
+          {{_usersdepartments?.firstName}}
+        </p> -->
+        <!-- <a href="#" class="btn btn-primary" (click)="showMyContainer=!showMyContainer">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+  <div >
+    <div class="table-item" >
+      <table class="table" st>
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of _users; let i = index">
+            <!-- <td style="width: 5%" class="text-center" scope="row">
+            </td> -->
+             <td>{{ obj.id }}</td>
+            <td>{{ obj.firstName }}</td>
+            <td>{{ obj.lastName }}</td>
+            <td>
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckChecked"
+                  [(ngModel)]="obj.status"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody> 
+      </table>
+  
+    </div>
+  </div>
+  </div>
+  
+  
+  
+  
