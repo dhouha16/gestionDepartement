@@ -8,23 +8,23 @@ import { DepartementComponent } from './departement/departement.component';
 import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee.component';
 import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
-
+import { AuthGuard } from '../guard/auth.guard';
 const routes: Routes = [
   {
     path:'dashbord',component:BaseLayoutComponent,children:[
         {
-      path:'employee',component:EmployeeComponent
+      path:'employee',component:EmployeeComponent,  canActivate: [AuthGuard]
     },
     {
-      path:'departement',component:DepartementComponent
+      path:'departement',component:DepartementComponent, canActivate: [AuthGuard]
     },
     {
-      path:'project',component:ProjectComponent
+      path:'project',component:ProjectComponent,  canActivate: [AuthGuard]
     }
     ,{
-       path:'schedule',component:ScheduleEmployeeComponent
+       path:'schedule',component:ScheduleEmployeeComponent , canActivate: [AuthGuard]
   },{
-    path:'projectEmployee',component:ProjectEmplyeesComponent
+    path:'projectEmployee',component:ProjectEmplyeesComponent, 
 },
 ]}
 ];

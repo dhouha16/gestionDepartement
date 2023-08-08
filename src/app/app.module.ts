@@ -16,12 +16,13 @@ import { BaseLayoutComponent } from './private/sharedLayout/base-layout/base-lay
 import { SidbarComponent } from './private/sharedLayout/sidbar/sidbar.component';
 import { HeaderComponent } from './private/sharedLayout/header/header.component';
 import { ModalUpdateUserComponent } from './sharedConfig/modal-update-user/modal-update-user.component';
-import { LoginComponent } from './auth/login/login.component';
+
 import { DepartementModalComponent } from './sharedConfig/departement-modal/departement-modal.component';
 import { ProjectModalComponent } from './sharedConfig/project-modal/project-modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddTasksModalComponent } from './sharedConfig/add-tasks-modal/add-tasks-modal.component';
 import { ListProjectTasksModalComponent } from './sharedConfig/list-project-tasks-modal/list-project-tasks-modal.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -31,11 +32,11 @@ import { ListProjectTasksModalComponent } from './sharedConfig/list-project-task
     ConfirmDialogComponent,
     ModalComponent,
     ModalUpdateUserComponent,
-    LoginComponent,
     DepartementModalComponent,
     ProjectModalComponent,
     AddTasksModalComponent,
     ListProjectTasksModalComponent,
+    LoginComponent,
  
     
   ],
