@@ -8,29 +8,22 @@
         <ul class="list-unstyled components px-5">
           <img class="item-flex-img-sidebar " src="../assets/images/departement.png" width="100 px" height="100px" >
           <li>
-            <a routerLink="/dashbord/employee">gestion utilisateur</a>
-
-
-            <!-- <a
-              href="#homeSubmenu"
-              data-toggle="collapse"
-              aria-expanded="false">gestion utilisateur</a
-            > -->
+            <a routerLink="/dashbord/employee" *ngIf="showAdmin">gestion utilisateur</a>
 
           <li>
-            <a routerLink="/dashbord/departement">gestion departement</a>
+            <a routerLink="/dashbord/departement" *ngIf="showAdmin">gestion departement</a>
           </li>
 
           <li>
-            <a routerLink="/dashbord/schedule">gestion horaire employee</a>
+            <a routerLink="/dashbord/schedule" *ngIf="showAdmin">gestion horaire employee</a>
           </li>
 
           <li>
-            <a routerLink="/dashbord/project">gestion projet</a>
+            <a routerLink="/dashbord/project" *ngIf="showAdmin">gestion projet</a>
           </li>
           
           <li>
-            <a routerLink="/dashbord/projectEmployee">Project employee</a>
+            <a routerLink="/dashbord/projectEmployee" *ngIf="showSimpleUser" >Project employee</a>
           </li>
 
           <li>

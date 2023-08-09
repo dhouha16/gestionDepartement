@@ -23,7 +23,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { AddTasksModalComponent } from './sharedConfig/add-tasks-modal/add-tasks-modal.component';
 import { ListProjectTasksModalComponent } from './sharedConfig/list-project-tasks-modal/list-project-tasks-modal.component';
 import { LoginComponent } from './auth/login/login.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { LoginComponent } from './auth/login/login.component';
     NgbModalModule,
     PrivateModule,
     NgSelectModule,
-
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]

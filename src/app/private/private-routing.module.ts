@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path:'dashbord',component:BaseLayoutComponent,children:[
         {
-      path:'employee',component:EmployeeComponent,  canActivate: [AuthGuard]
+      path:'employee',component:EmployeeComponent, canActivate: [AuthGuard]
     },
     {
       path:'departement',component:DepartementComponent, canActivate: [AuthGuard]
