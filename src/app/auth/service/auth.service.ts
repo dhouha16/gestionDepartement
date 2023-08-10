@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, of  } from 'rxjs';
+import { BehaviorSubject, Observable, of  } from 'rxjs';
+import { User } from 'src/app/models/Users';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,8 +12,12 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   path = environment.path;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
+  private userSubject: BehaviorSubject<User | null>;
 
-  constructor( private httpClient: HttpClient) {}
+  constructor( private httpClient: HttpClient, private router:Router) {
+    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+
+  }
   isAuthenticate: boolean = false;
 
 
@@ -44,4 +50,13 @@ export class AuthService {
   //   return true;
   // else return false
   }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
+    localStorage.removeItem('JWT');
+    localStorage.removeItem('ROLE');
+    this.userSubject.next(null);
+    this.router.navigate(['/login']);
+}
 }

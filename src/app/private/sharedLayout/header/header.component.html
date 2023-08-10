@@ -5,12 +5,17 @@
   </button>
 
   <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent">
-    <ul class="navbar-nav container">
+    <ul class="navbar-nav container ">
+      <div class="container-item px-3">
+        <li class="nav-item">
+          {{user.userName}}
+        </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">logout</a>
+        <a style="cursor: pointer" class="nav-link" (click)="logout()">logout</a>
       </li>
+    </div>
       <li class="nav-item">
-        <img src="../assets/images/avatar.jpg" style="width: 50px;height: 50px;padding-right:20%;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="../assets/images/avatar.jpg" style="width: 60px;height: 60px;padding-right:20%;padding-top:5%;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       </li>
     </ul>
 

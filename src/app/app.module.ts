@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -25,6 +25,8 @@ import { ListProjectTasksModalComponent } from './sharedConfig/list-project-task
 import { LoginComponent } from './auth/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { BasicAuthInterceptor } from './shared/interceptor/basic-auth.interceptor';
+import { ErrorInterceptor } from './shared/interceptor/error.interceptor';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [NgbActiveModal],
+  providers: [NgbActiveModal,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
