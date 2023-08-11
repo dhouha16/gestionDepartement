@@ -11,22 +11,44 @@ import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.co
 import { AuthGuard } from '../guard/auth.guard';
 const routes: Routes = [
   {
-    path:'dashbord',component:BaseLayoutComponent,children:[
-        {
-      path:'employee',component:EmployeeComponent, canActivate: [AuthGuard]
-    },
-    {
-      path:'departement',component:DepartementComponent, canActivate: [AuthGuard]
-    },
-    {
-      path:'project',component:ProjectComponent,  canActivate: [AuthGuard]
-    }
-    ,{
-       path:'schedule',component:ScheduleEmployeeComponent , canActivate: [AuthGuard]
-  },{
-    path:'projectEmployee',component:ProjectEmplyeesComponent, 
-},
-]}
+    path: 'dashbord', component: BaseLayoutComponent, children: [
+      {
+        path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin'
+            , 'simple_user'
+          ]
+        }
+      },
+      {
+        path: 'departement', component: DepartementComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin'
+          ]
+        }
+      },
+      {
+        path: 'project', component: ProjectComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin'
+          ]
+        }
+      }
+      , {
+        path: 'schedule', component: ScheduleEmployeeComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin'
+          ]
+        }
+      }, {
+        path: 'projectEmployee', component: ProjectEmplyeesComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin' , 'simple_user'
+          ]
+        }
+      },
+    ]
+  }
 ];
 
 @NgModule({
@@ -34,4 +56,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class PrivateRoutingModule {
- }
+}

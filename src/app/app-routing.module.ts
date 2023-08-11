@@ -6,12 +6,13 @@ import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     loadChildren: () => import('./private/private.module').then(m => m.PrivateModule)
   },{
     path: 'login',
     component: LoginComponent
 },
+{path:'' ,redirectTo:'login',pathMatch:'full'}
 ];
 
 @NgModule({
