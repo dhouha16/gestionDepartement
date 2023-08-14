@@ -9,6 +9,7 @@ import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee
 import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 import { AuthGuard } from '../guard/auth.guard';
+import { MapComponent } from './map/map.component';
 const routes: Routes = [
   {
     path: 'dashbord', component: BaseLayoutComponent, children: [
@@ -42,6 +43,13 @@ const routes: Routes = [
         }
       }, {
         path: 'projectEmployee', component: ProjectEmplyeesComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin' , 'simple_user'
+          ]
+        }
+      },
+       {
+        path: 'contact', component: MapComponent, canActivate: [AuthGuard],
         data: {
           role: ['admin' , 'simple_user'
           ]

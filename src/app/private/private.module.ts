@@ -13,8 +13,7 @@ import { ScheduleEmployeeComponent } from './schedule-employee/schedule-employee
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
-
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 
 @NgModule({
@@ -24,6 +23,8 @@ import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.co
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    LeafletModule,
+ 
   // Add any other required modules
   ],
   declarations: [
