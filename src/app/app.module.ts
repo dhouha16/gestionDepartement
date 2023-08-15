@@ -27,8 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BasicAuthInterceptor } from './shared/interceptor/basic-auth.interceptor';
 import { ErrorInterceptor } from './shared/interceptor/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { MapComponent } from './private/map/map.component';
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { MapComponent } from './private/map/map.component';
     AddTasksModalComponent,
     ListProjectTasksModalComponent,
     LoginComponent,
-    MapComponent
+  
  
     
   ],
@@ -57,7 +57,7 @@ import { MapComponent } from './private/map/map.component';
     NgSelectModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    LeafletModule
+    
   ],
   providers: [NgbActiveModal,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

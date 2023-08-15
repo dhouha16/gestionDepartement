@@ -12,5 +12,5 @@
   "include": [
     "src/**/*.d.ts"
   ]
-  ,"types": ["leaflet"],
+  ,"types": ["leaflet","googlemaps"],
 }

@@ -14,6 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     ScheduleEmployeeComponent,
     ProjectComponent,
     ProjectEmplyeesComponent,
+    MapComponent
     
     // Declare your private component here
   ],
