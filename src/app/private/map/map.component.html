@@ -5,6 +5,6 @@
   [leafletOptions]="options"
   (leafletMapReady)="onMapReady($event)"
   (leafletClick)="mapClicked($event)"
- >
-
+>
+  <div *ngFor="let content of popupContent" [innerHTML]="content"></div>
 </div>

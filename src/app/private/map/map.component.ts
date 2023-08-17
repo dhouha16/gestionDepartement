@@ -26,7 +26,7 @@ export class MapComponent implements OnInit {
   @ViewChild('container', { static: true }) container!: ElementRef;
 
 
-   constructor(private renderer: Renderer2) { 
+   constructor(private renderer: Renderer2, private elementRef: ElementRef) { 
 }
 
   ngOnInit(): void {
@@ -50,31 +50,40 @@ export class MapComponent implements OnInit {
     ];
     
     this.popupContent = [
-      "<b>position darna</b><br><button (click)='getlocation();'>read</button>",
+      `<div align='center'>
+      <a class="btn btn-primary button-raised partner-link" id='confirm' onclick="${this.getlocation()}"">
+       read me</a>
+        <p style='font-size:14px;margin: 5px'>darna</p>
+        <img style="height: 60px; width: 60px; margin: 0"  src="assets/images/avatar.jpg">
+      </div>
+      `,
       "<b>position teamdev</b>",
       "<b>position epi</b>"
     ];
-  
-    
-    // this.popupContent.forEach((content: string) => {
-    //   const element = this.renderer.createElement('div');
-    //   this.renderer.setProperty(element, 'innerHTML', content);
-    //   this.renderer.listen(element, 'click', this.getlocation.bind(this));
-    //   this.renderer.appendChild(this.container.nativeElement, element);
-    // });
   
 
     for (let index = 0; index < initialMarkers.length; index++) {
       const data = initialMarkers[index];
       const marker = this.generateMarker(data, index);
       
-      marker.addTo(this.map).bindPopup(this.popupContent[index]);
+      marker.addTo(this.map).bindPopup(this.popupContent[index]) 
+       .on("popupopen", () => {
+        this.elementRef.nativeElement
+          .querySelector("#confirm")
+          .addEventListener("click", (e: any) => {
+            this.textClick()
+          });
+      });
       
       this.map.panTo(data.position);
       this.markers.push(marker);
     }
   }
 
+  textClick(){
+    console.log('ffffffffffffffff');
+    
+  }
   generateMarker(data: any, index: number) {
     return Leaflet.marker(data.position, { draggable: data.draggable })
       .on('click', (event) => this.markerClicked(event, index))

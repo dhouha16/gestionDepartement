@@ -10,6 +10,7 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { MapComponent } from './map/map.component';
+import { CalendarComponent } from './calendar/calendar.component';
 const routes: Routes = [
   {
     path: 'dashbord', component: BaseLayoutComponent, children: [
@@ -50,6 +51,14 @@ const routes: Routes = [
       },
        {
         path: 'contact', component: MapComponent, canActivate: [AuthGuard],
+        data: {
+          role: ['admin' , 'simple_user'
+          ]
+        }
+      },
+    
+       {
+        path: 'Calendar', component: CalendarComponent, canActivate: [AuthGuard],
         data: {
           role: ['admin' , 'simple_user'
           ]

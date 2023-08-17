@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
 
  
   onLogin() {
+
+    localStorage.clear();
     const user:any={
       // "id":this.myForm.controls['id'].value,
       "login":this.form.controls['login'].value,

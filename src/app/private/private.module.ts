@@ -15,7 +15,11 @@ import { ProjectComponent } from './project/project.component';
 import { ProjectEmplyeesComponent } from './project-emplyees/project-emplyees.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './map/map.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -25,7 +29,12 @@ import { MapComponent } from './map/map.component';
     ReactiveFormsModule,
     NgSelectModule,
     LeafletModule,
- 
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    FlatpickrModule.forRoot(),
+    NgbModalModule
   // Add any other required modules
   ],
   declarations: [
@@ -38,7 +47,9 @@ import { MapComponent } from './map/map.component';
     ScheduleEmployeeComponent,
     ProjectComponent,
     ProjectEmplyeesComponent,
-    MapComponent
+    MapComponent,
+    CalendarComponent,
+
     
     // Declare your private component here
   ],
